@@ -2,6 +2,8 @@ import { useSearchParams } from "react-router-dom";
 import { useGetPost } from "../hooks/useGetPost";
 import { useState } from "react";
 import { useAddComment } from "../hooks/useAddComment";
+import { useGetComments } from "../hooks/useGetComments";
+import { CommentPost } from "../types/types";
 
 function Info() {
   function submitHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -25,6 +27,7 @@ function Info() {
     paramType,
     paramKey,
   );
+  const getComments = useGetComments(id);
   const addComment = useAddComment();
   if (isLoading) {
     return <div>Loading...</div>;
@@ -59,8 +62,15 @@ function Info() {
           Submit
         </button>
       </form>
-      <p>Comment 1</p>
-      <p>Comment 2</p>
+      {getComments.isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <ul>
+          {getComments.data.map((comment: CommentPost) => (
+            <li key={comment.postId}>{comment.body}</li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

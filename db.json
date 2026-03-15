@@ -130,6 +130,11 @@
       "postId": 1,
       "body": " bn\n",
       "id": 2
+    },
+    {
+      "postId": 1,
+      "body": "3rd comment\n",
+      "id": 3
     }
   ]
 }
