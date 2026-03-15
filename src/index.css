@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .button {
+    @apply m-2 px-5 bg-gray-500 rounded-2xl hover:cursor-pointer;
+  }
+  .flex-center{
+    @apply flex justify-center;
+  }
+}
